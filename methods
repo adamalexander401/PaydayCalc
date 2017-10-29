@@ -1,0 +1,49 @@
+package paydayCalc;
+import java.util.Scanner;
+
+public class paydayCalcMethods {
+    private double totalPay;
+    private double hoursWorked;
+    private double hourlyRate;
+    private double overtimePay;
+    
+/*
+    method getValues asks the user for input,
+    stores values to variables, and ends the displayResults method upon user value entry of 0
+*/
+public void getValues() {
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter the number of hours worked in the previous pay period \n ...or enter 0 to stop processing: ");
+    hoursWorked = input.nextDouble();
+    
+    if (hoursWorked <= 0){
+        System.out.printf("\n>>>Calculations complete.");
+        System.exit(0);
+    } else {
+    System.out.printf("Enter your hourly rate of pay: $");
+    hourlyRate = input.nextDouble();
+    }
+}
+
+
+/*
+    method displayResults processes values stored from getValues method.
+    this method will loop until the user enters 0 and the getValues method runs the System.exit(0) command
+*/
+public void displayResults() {
+
+    while (hoursWorked != 0) {
+        if (hoursWorked <= 40) {
+            totalPay = hoursWorked * hourlyRate;
+            System.out.printf("Your gross pay for the previous pay period is: $%.2f\n", totalPay);
+        } else if (hoursWorked > 40) {
+            overtimePay = (hoursWorked - 40)*(hourlyRate *1.5);
+            totalPay = (40 * hourlyRate) + overtimePay;
+            System.out.printf("Your total gross pay for the previous pay period is: $%.2f \n", totalPay);
+            System.out.printf(">>>$%.2f of your total pay is overtime pay (1.5x) \n \n", overtimePay);          
+        } 
+    getValues();
+    }
+    }
+}
+
