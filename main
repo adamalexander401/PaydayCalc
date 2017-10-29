@@ -1,0 +1,20 @@
+package paydayCalc;
+
+public class paydayCalcMain {
+
+/* 
+    classroom example that demonstrates object-oriented programming techniques in java
+    
+    program calculates pay based on user input of pay rate and hours worked. 
+    pay period based on one week. 
+    
+    overtime pay is calculated at 1.5x regular pay
+    pay period is one week, 40 hours
+*/
+    
+    public static void main(String[] args) {
+        paydayCalcMethods payday = new paydayCalcMethods();
+        payday.getValues();
+        payday.displayResults();   
+    }
+}
